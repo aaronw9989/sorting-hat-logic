@@ -1,19 +1,29 @@
 #!/usr/bin/env python3
-""" WRITE YOUR OWN IF-LOGIC SCRIPT! Sorting Hat Project """
+""" Project One """
 
 
+# define our main function
 def main():
+
+    # Welcome the user to our Sorting Hat Quiz
+    print(" ____             _   _               _   _       _      ___        _ ")
+    print("/ ___|  ___  _ __| |_(_)_ __   __ _  | | | | __ _| |_   / _ \ _   _(_)____")
+    print("\___ \ / _ \| '__| __| | '_ \ / _` | | |_| |/ _` | __| | | | | | | | |_  /")
+    print(" ___) | (_) | |  | |_| | | | | (_| | |  _  | (_| | |_  | |_| | |_| | |/ / ")
+    print("|____/ \___/|_|   \__|_|_| |_|\__, | |_| |_|\__,_|\__|  \__\_\__,_|_/___|")
+    print("                              |___/")
 
     # Display the game menu while user is playing
     while True:
         display_menu()
 
-
+# function to take the quiz
 def take_quiz():
 
     # Create a dictionary to keep count of the house
     points_counter = {"gryffindor": 0, "slytherin": 0, "ravenclaw": 0, "hufflepuff": 0}
 
+    # Hogwarts
     print("Welcome to Hogwarts!")
 
     # get the name of our young wizard
@@ -80,9 +90,21 @@ def take_quiz():
     # Increment the house in points counter
     points_counter[evaluate_response(question_four)] += 1
 
+    # Ask question five
+    print("\nWhich of these resonates with you the most? "
+          "\n(a) I always have the best snacks"
+          "\n(b) I take great pride in my appearance"
+          "\n(c) Act first and ask questions later"
+          "\n(d) I'm not afraid to be an individual")
+    # Grab the user response
+    question_five = get_user_input()
+    # Increment the house in points counter
+    points_counter[evaluate_response(question_five)] += 1
+
     # Decide which house to place the young wizard
     house = calculate_house(points_counter)
 
+    # Display the sorting had decision to our user
     print(f'\nSorting Hat: \"Your house is {house}!\"\n')
 
 
@@ -118,10 +140,6 @@ def calculate_house(house_dict):
 def get_user_input():
     user_input = input("User input: ")
     return user_input.lower().rstrip()
-
-
-def get_name():
-    return None
 
 
 def display_menu():
